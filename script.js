@@ -2,14 +2,17 @@ var currentDay = $("#currentDay");
 var day=moment().format('MMMM Do YYYY')
 var scheduleText = $('textarea');
 var timeBlock = $('.time-block');
-var timeNow = moment().format('HH');
-console.log(timeNow)
+var timeNow = moment().hour();
+
 
 
 
 document.addEventListener('DOMContentLoaded', function() {
 
 
+    colorChange()
+
+    currentDay.text(day);
 
 
 
@@ -51,21 +54,26 @@ function colorChange(){
     timeBlock.each(function(){
     var thisHour = $(this)
 
-    var timeHour = parseInt(thisHour.attr("data-hour"));
+    var timeHour = parseInt(thisHour.attr("data-hour"),10);
     console.log(timeHour)
+    console.log(timeNow)
+    
+    
     if (timeHour == timeNow) {
 
         timeBlock.addClass('present');
-    } else if (timeHour < timeNow) {
-        timeBlock.addClass('past');
-    } else if (timeHour> timeNow) {
-        timeBlock.addClass('future')
+        timeBlock.removeClass('future past');
+    } 
+
+     if (timeHour < timeNow) {
+         timeBlock.addClass('past');
+     }
+
+     if (timeHour > timeNow) {
+         timeBlock.addClass('future')
     }
 }) 
 
 
 
-colorChange()
-
-currentDay.text(day);
 }
