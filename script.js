@@ -46,31 +46,30 @@ $('#16 .description').val(JSON.parse(localStorage.getItem('16')));
 $('#17 .description').val(JSON.parse(localStorage.getItem('17')));
 $('#18 .description').val(JSON.parse(localStorage.getItem('18')));
 
-// Change colors of rows based on current time
+
 })
 
-
+// Change colors of rows based on current time
 function colorChange(){
     timeBlock.each(function(){
-    var thisHour = $(this)
-
+    var thisHour = $(this);
+      
     var timeHour = parseInt(thisHour.attr("data-hour"),10);
-    console.log(timeHour)
-    console.log(timeNow)
+   
     
     
-    if (timeHour == timeNow) {
-
-        timeBlock.addClass('present');
-        timeBlock.removeClass('future past');
+    thisHour.removeClass('future past present');
+    if (timeHour === timeNow) {
+        thisHour.addClass('present');
+        
     } 
 
      if (timeHour < timeNow) {
-         timeBlock.addClass('past');
+        thisHour.addClass('past');
      }
 
      if (timeHour > timeNow) {
-         timeBlock.addClass('future')
+        thisHour.addClass('future');
     }
 }) 
 
