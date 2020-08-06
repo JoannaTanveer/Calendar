@@ -2,3 +2,4 @@ This is a simple work day scheduler. The user enters a meeting or other schedule
 
 https://joannatanveer.github.io/Calendar/
 
+![screenshot](calendar_screenshot.png)
